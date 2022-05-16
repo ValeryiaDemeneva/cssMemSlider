@@ -1,94 +1,154 @@
-* {
-  margin: 0;
+@import url("https://fonts.googleapis.com/css2?family=Koulen&display=swap");
+
+*,
+*::after,
+*::before {
   padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.container {
+body {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  line-height: 1.2rem;
+  font-size: 1rem;
+}
+
+.slides {
+  height: auto;
+  background: rgb(247, 175, 223);
+  width: 60rem;
+  display: block;
+  padding: 1rem 1.2rem;
+}
+
+.r {
+  display: none;
+}
+
+.img_slider {
   overflow: hidden;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 45rem;
+}
+
+.img_container {
+  display: flex;
+  transition: all 0.9s;
+  width: calc(100% * 4);
+  height: 100%;
+}
+
+.img {
+  object-fit: contain;
+  width: calc(100% / 4);
+  height: 100%;
+}
+
+.textAndButtons {
+  margin-bottom: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.text_container {
+  width: 50%;
+  overflow: hidden;
+}
+
+.text {
+  width: calc(100% * 4);
+  height: 100%;
+  display: flex;
+  transition: all 0.9s;
+}
+
+.t {
+  width: calc(100% / 4);
+  font-family: "Koulen", cursive;
+  font-size: 1.1rem;
 }
 
 .controls {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: end;
-  z-index: 2;
-  position: relative;
-  bottom: 127px;
 }
 .button {
-  background-color: rgb(2, 0, 3);
-  height: 1.2em;
-  width: 1.2em;
+  background: #ff00d4;
   border-radius: 50%;
-  margin: 6px;
+  width: 1rem;
+  height: 1rem;
   cursor: pointer;
-  opacity: 0.5;
-  transition: all 0.4s ease;
+  display: block;
+  transition: all 0.4s;
+}
+.controls label {
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+  cursor: pointer;
+}
+
+.controls label + .controls label {
+  margin-left: 0.8rem;
 }
 
 .button:hover {
-  opacity: 0.8;
-  transform: scale(1.1);
+  background-color: rgb(63, 7, 54);
 }
-
-input[name="r"] {
-  position: absolute;
-  visibility: hidden;
-}
-.slides {
-  display: flex;
-  width: 400%;
-  height: 100%;
-}
-.slide {
-  width: 25%;
-  transition: all 0.6s ease;
-}
-.slide p {
-  margin-top: 20px;
-}
-.slide img {
-  width: 100%;
-  height: 80%;
-}
-
-#r1:checked ~ .s1 {
+#r1:checked ~ .img_slider .img_container,
+#r1:checked ~ .textAndButtons .text_container .text {
   margin-left: 0;
 }
-#r2:checked ~ .s1 {
-  margin-left: -25%;
+#r2:checked ~ .img_slider .img_container,
+#r2:checked ~ .textAndButtons .text_container .text {
+  margin-left: -100%;
 }
-#r3:checked ~ .s1 {
-  margin-left: -50%;
+#r3:checked ~ .img_slider .img_container,
+#r3:checked ~ .textAndButtons .text_container .text {
+  margin-left: -200%;
 }
-#r4:checked ~ .s1 {
-  margin-left: -75%;
-}
-
-.texts {
-  display: flex;
-  flex-direction: row;
-  width: 400%;
-}
-.text {
-  width: 25%;
-  transition: all 0.6s ease;
-}
-.t {
-  width: 100%;
+#r4:checked ~ .img_slider .img_container,
+#r4:checked ~ .textAndButtons .text_container .text {
+  margin-left: -300%;
 }
 
-@media (max-width: 302px) {
-    body {
-        padding: 3
-        0px;
-    }
-    
+#r1:checked ~ .textAndButtons .controls label:nth-child(1) .button,
+#r2:checked ~ .textAndButtons .controls label:nth-child(2) .button,
+#r3:checked ~ .textAndButtons .controls label:nth-child(3) .button,
+#r4:checked ~ .textAndButtons .controls label:nth-child(4) .button {
+  border: 0.125rem solid rgb(36, 9, 82);
+  background: transparent;
+}
+
+@media (max-width: 420px) {
+  .slides {
+    width: 100%;
+  }
+
+  .img_slider {
+    height: 16rem;
+  }
+  .text_container {
+    order: 1;
+    margin-top: 15px;
+    width: 100%;
+  }
+  .text {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .textAndButtons {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .controls {
+    order: 0;
+  }
 }
