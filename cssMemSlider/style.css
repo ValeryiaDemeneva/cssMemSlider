@@ -3,10 +3,6 @@
   padding: 0;
 }
 
-body {
-  
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -19,12 +15,17 @@ body {
 
 .controls {
   display: flex;
-  transform: translateX(-50%);
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  z-index: 2;
+  position: relative;
+  bottom: 127px;
 }
 .button {
   background-color: rgb(2, 0, 3);
-  height: 1.5em;
-  width: 1.5em;
+  height: 1.2em;
+  width: 1.2em;
   border-radius: 50%;
   margin: 6px;
   cursor: pointer;
@@ -37,26 +38,21 @@ body {
   transform: scale(1.1);
 }
 
-.textAndControls {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 70px;
-}
-
 input[name="r"] {
   position: absolute;
   visibility: hidden;
 }
 .slides {
- display: flex;
+  display: flex;
   width: 400%;
   height: 100%;
 }
 .slide {
   width: 25%;
   transition: all 0.6s ease;
+}
+.slide p {
+  margin-top: 20px;
 }
 .slide img {
   width: 100%;
@@ -74,4 +70,25 @@ input[name="r"] {
 }
 #r4:checked ~ .s1 {
   margin-left: -75%;
+}
+
+.texts {
+  display: flex;
+  flex-direction: row;
+  width: 400%;
+}
+.text {
+  width: 25%;
+  transition: all 0.6s ease;
+}
+.t {
+  width: 100%;
+}
+
+@media (max-width: 302px) {
+    body {
+        padding: 3
+        0px;
+    }
+    
 }
